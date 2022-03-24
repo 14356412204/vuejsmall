@@ -2,7 +2,7 @@
   <div id="app">
 
     <router-view/>
-    <MainTabBar></MainTabBar>
+    <MainTabBar class="MainTabBar"></MainTabBar>
   </div>
 </template>
 
@@ -19,4 +19,8 @@ export default {
 <style>
 /* 引入base.css文件 */
 @import "assets/css/base.css";
+.MainTabBar{
+  position: relative;
+  z-index: 999;
+}
 </style>

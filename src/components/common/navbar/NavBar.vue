@@ -15,8 +15,8 @@ export default {
 <style>
   .nav-bar{
     display: flex;
+    width: 100%;
     line-height: 44px;
-    box-shadow: 0 1px 1px rgba(182, 182, 182, 0.3);
   }
   .left,.right{
     height: 100%;
