@@ -6,12 +6,7 @@
 
 <script>
 export default {
-  name:'BackTop',
-  methods:{
-    backyopbtn(){
-      console.log('点击了')
-    }
-  }
+  name:'BackTop'
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
-  <div class="goodlistitem">
+  <div class="goodlistitem" @click="itemClick">
     <!-- {{goodsitem}} -->
-    <a :href="goodsitem.link"><img :src="goodsitem.show.img" alt=""></a>
+    <img :src="goodsitem.show.img" alt="" @load="imgLoad">
     <div class="imgdec">
       <p>{{goodsitem.title}}</p>
       <span class="price">{{goodsitem.price}}</span>
@@ -20,11 +20,19 @@ export default {
         return {}
       }
     }
+  },
+  methods:{
+    imgLoad(){
+      this.$bus.$emit('itemImgLoad')
+    },
+    itemClick(){
+      this.$router.push('/detail/' + this.goodsitem.iid )
+    }
   }
 }
 </script>
 
-<style>
+<style scope>
   .goodlistitem{
     width:48%;
   }

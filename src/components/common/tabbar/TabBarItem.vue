@@ -26,7 +26,7 @@ export default {
   },
   methods:{
     active(){
-      this.$router.push(this.path)
+      this.$router.replace(this.path)
       // isActive=this.$route.path
       // for(let i=0;i<this.$parent.$children.length;i++){
       //   this.$parent.$children[i].isActive=false

@@ -18,11 +18,12 @@ export default {
   },
   components:{
     GoodListItem
-  }
+  },
+  
 }
 </script>
 
-<style>
+<style scope>
   .goods{
     display: flex;
     flex-wrap: wrap;
