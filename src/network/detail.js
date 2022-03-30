@@ -7,6 +7,14 @@ export function getDetailData(iid){
     }
   })
 }
+export function getRecommendData(iid){
+  return request({
+    url:'/recommend',
+    params:{
+      iid
+    }
+  })
+}
 export class GoodsInfo{
   constructor(intemInfo,columns,services){
     this.title = intemInfo.title

@@ -43,7 +43,7 @@ export default {
       timer:null,
       tabOffsetTop:0,
       tabIsShow:false,
-      saveY:0
+      saveY:0,
     };
   },
   computed: {
