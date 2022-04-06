@@ -8,7 +8,7 @@
         <div v-for="(item,index) in titles" 
         class="titleItem" 
         @click="itemClick(index)" 
-        :class="{isClick:index===currentIndex}"
+        :class="{isClick:index===titleCurrentIndex}"
         >{{item}}
         </div>
       </div>
@@ -26,12 +26,26 @@ export default {
       currentIndex:0
     }
   },
+  // props:{
+  //   positions:[
+  //     itemPosition,
+  //     paramsPosition,
+  //     commentsPosition,
+  //     recommendPosition
+  //   ]
+  // },
   components:{
     NavBar
+  },
+  props:{
+    titleCurrentIndex:{
+      type:Number
+    }
   },
   methods:{
     itemClick(index){
       this.currentIndex = index
+      this.$emit("titleClick",index)
     },
     back(){
       this.$router.back(0)

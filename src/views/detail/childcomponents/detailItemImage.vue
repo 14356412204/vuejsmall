@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import {debounce} from 'components/utils'
 export default {
   name:'detailItemImage',
   props:{
@@ -23,7 +24,7 @@ export default {
   },
   methods:{
     detailImageLoad(){
-        this.$bus.$emit('detailImageLoaded')
+      this.$emit('detailImageLoaded')
     }
   }
 }

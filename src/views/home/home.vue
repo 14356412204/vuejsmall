@@ -18,11 +18,13 @@ import NavBar from "components/common/navbar/NavBar";
 import TabControl from "components/content/tabControl/TabControl";
 import GoodList from "components/content/goods/GoodList";
 import scroll from '@/components/common/scroll/scroll'
-import BackTop from '@/components/common/backtop/BackTop'
+// import BackTop from '@/components/common/backtop/BackTop'
+import {itemListenerMixin,detailBackTopMixin} from 'common/mixin.js'
 
 import homeSwiper from "./childComponents/homeSwiper.vue";
 import RecommendView from "./childComponents/RecommendView.vue";
 import FeatureView from "./childComponents/FeatureView.vue";
+
 
 import { getHomeMultidata, getHomeGoods } from "network/home";
 import {debounce} from 'components/utils'
@@ -39,21 +41,18 @@ export default {
         sell: { page: 0, list: [] },
       },
       currentType: "pop",
-      positiony:'',
       timer:null,
       tabOffsetTop:0,
       tabIsShow:false,
       saveY:0,
+      positiony:''
     };
   },
+  mixins:[itemListenerMixin,detailBackTopMixin],
   computed: {
     showGoods() {
       return this.goods[this.currentType].list;
-    },
-    // 设置一个计算属性，当滑动距离超过1000时显示backtop的按钮
-    isShow(){
-      return this.positiony < -1000
-    },
+    }
   },
   components: {
     NavBar,
@@ -63,7 +62,6 @@ export default {
     FeatureView,
     GoodList,
     scroll,
-    BackTop
   },
   created() {
     this.getHomeMultidata();
@@ -101,9 +99,6 @@ export default {
       }
       this.$refs.fixedtabcontrol.currentIndex = index
       this.$refs.tabcontrol.currentIndex = this.$refs.fixedtabcontrol.currentIndex
-    },
-    backtopbtn(){
-      this.$refs.scroll.scrollTo(0,0,1000)
     },
     contentScroll(position){
       this.positiony = position.y

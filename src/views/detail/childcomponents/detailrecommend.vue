@@ -4,7 +4,7 @@
     v-if="recommendData.length !== 0"
   >
     <div v-for="item in recommendData" class="recommendItem">
-      <img :src="item.image" alt="" />
+      <img :src="item.image" alt="" @load="recommendDataImg"/>
       <div class="imgdec">
         <p>{{ item.title }}</p>
         <span class="price">{{ item.price }}</span>
@@ -22,9 +22,14 @@ export default {
       type: Array,
       default() {
         return [];
-      },
-    },
+      }
+    }
   },
+  methods:{
+    recommendDataImg(){
+      this.$emit('itemRecommendDataImg')
+    }
+  }
 };
 </script>
 

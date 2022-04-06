@@ -1,6 +1,6 @@
 <template>
   <div id="category">
-    <scroll class="scrollContent">
+    <scroll class="scrollContent" ref="scroll" :probe-type="3" @scroll="categoryScroll">
       <ul>
       <li>分类列表1</li>
       <li>分类列表2</li>
@@ -104,18 +104,24 @@
       <li>分类列表100</li>
       </ul>
     </scroll>
+    <BackTop  @click.native="backtopbtn" v-show="isShow" ></BackTop>
   </div>
 </template>
 
 <script>
 import scroll from '@/components/common/scroll/scroll'
-// import Pullup from 'better-scroll'
-// BScroll.use(Pullup)
+import {itemListenerMixin,detailBackTopMixin} from 'common/mixin.js'
 export default {
   name:'category',
   components:{
     scroll
-  }
+  },
+  mixins:[itemListenerMixin,detailBackTopMixin],
+  methods: {
+    categoryScroll(position){
+      this.positiony = position.y
+    }
+  },
   // mounted(){
   //   this.scroll = new BScroll(document.querySelector('.wrapper'),{
   //     probeType:3,
